@@ -16,6 +16,34 @@ struct JOGADOR
 	int cartasJogadas[9];
 	int contagemPontos;
 };
+void esperar_ok()
+{
+    system("cls");
+    printf("Digite OK para continuar: ");
+    fflush(stdin);
+
+    char input[3]; // Aumentamos o tamanho do buffer de entrada para 3 caracteres para acomodar o '\n'
+    fgets(input, sizeof(input), stdin); // Usamos fgets() para ler uma linha inteira, incluindo o '\n'
+
+    // Removemos o caractere '\n' do final da string
+    input[strcspn(input, "\n")] = '\0';
+
+    if (strcmp(input, "OK") != 0) // Usamos strcmp() para comparar strings de forma maiúscula e minúscula
+    {
+        esperar_ok(); // Chamamos a função novamente para dar outra chance ao usuário
+    }
+}
+
+
+void introducao() {
+  printf("BBBBBB 	DDDDDD 	  EEEEEE\n");
+  printf("B     B	D     D	  E\n");
+  printf("BBBBBB	D     D	  EEEEEE\n");
+  printf("B     B	D     D	  E\n");
+  printf("BBBBBB 	DDDDDD 	  EEEEEE\n");
+  printf("\nPressione Enter para jogar...\n");
+  getchar();
+}
 
 const char *IndexElemento(int indice)
 {
@@ -71,9 +99,11 @@ int AnaliseJogadas(struct JOGADOR* jogador1, struct JOGADOR* jogador2, int quant
 
 int PedirEVerificarJogada(struct JOGADOR* jogador1, struct JOGADOR* jogador2, int i, int quantRodadas, int index)
 {
+	
 	int jogada;
 	if(i % 2 == 0)
 		{
+			
 			system("cls");
 			printf("Vez do JOGADOR 1\n");
 			for(int j = 0; j < quantRodadas; j++)
@@ -105,7 +135,7 @@ int PedirEVerificarJogada(struct JOGADOR* jogador1, struct JOGADOR* jogador2, in
 			
 			while(jogador2->cartas[jogada - 1].jogada == 1)
 			{
-				printf("Essa carta já foi jogada, tente novamente\n");
+				printf("Essa carta j? foi jogada, tente novamente\n");
 				scanf("%d", &jogada);
 			}
 			
@@ -119,6 +149,7 @@ int PedirEVerificarJogada(struct JOGADOR* jogador1, struct JOGADOR* jogador2, in
 
 int Rodada(struct JOGADOR* jogador1, struct JOGADOR* jogador2, int quantRodadas)
 {
+	
 	int index = 0;
 	for (int i = 0; i < (quantRodadas * 2); i++)
 	{
@@ -134,7 +165,9 @@ int Rodada(struct JOGADOR* jogador1, struct JOGADOR* jogador2, int quantRodadas)
 
 int main(void)
 {
-	srand(time(NULL));//faz com que o sorteio de cartas seja diferente sempre que executar o código
+	introducao();
+	system("cls");
+	srand(time(NULL));//faz com que o sorteio de cartas seja diferente sempre que executar o c?digo
 	
 	struct JOGADOR* jogador1 = (struct JOGADOR*)malloc(sizeof(struct JOGADOR));
     struct JOGADOR* jogador2 = (struct JOGADOR*)malloc(sizeof(struct JOGADOR));
