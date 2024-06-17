@@ -16,6 +16,7 @@ struct JOGADOR
 	int cartasJogadas[9];
 	int contagemPontos;
 };
+/*
 void esperar_ok()
 {
     system("cls");
@@ -28,11 +29,11 @@ void esperar_ok()
     // Removemos o caractere '\n' do final da string
     input[strcspn(input, "\n")] = '\0';
 
-    if (strcmp(input, "OK") != 0) // Usamos strcmp() para comparar strings de forma maiúscula e minúscula
+    if (strcmp(input, "OK") != 0) // Usamos strcmp() para comparar strings de forma maiÃºscula e minÃºscula
     {
-        esperar_ok(); // Chamamos a função novamente para dar outra chance ao usuário
+        esperar_ok(); // Chamamos a funÃ§Ã£o novamente para dar outra chance ao usuÃ¡rio
     }
-}
+}*/
 
 
 void introducao() {
@@ -233,4 +234,3 @@ int main(void)
 		printf("O resultado foi empate!");
 	}
 }
-
